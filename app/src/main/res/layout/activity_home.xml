@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HomeActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!-- Welcome Text -->
+            <TextView
+                android:id="@+id/welcomeText"
+                android:text="Hey 👋 Harish!"
+                android:textSize="26sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="8dp" />
+
+            <TextView
+                android:text="Let's manage attendance today!"
+                android:textSize="16sp"
+                android:textColor="@android:color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="24dp" />
+
+            <!-- Summary Card -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="8dp"
+                app:cardBackgroundColor="@android:color/white">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:padding="16dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical">
+
+                    <!-- Lottie Animation -->
+                    <com.airbnb.lottie.LottieAnimationView
+                        android:id="@+id/classroomAnimation"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        app:lottie_rawRes="@raw/student"
+                        app:lottie_autoPlay="true"
+                        app:lottie_loop="true" />
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_marginStart="16dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:text="Total Classes"
+                            android:textSize="16sp"
+                            android:textColor="#444"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <TextView
+                            android:id="@+id/totalClasses"
+                            android:text="08"
+                            android:textSize="24sp"
+                            android:textStyle="bold"
+                            android:textColor="#6200EE"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Action Buttons -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnMarkAttendance"
+                style="@style/Widget.MaterialComponents.Button"
+                android:text="🎯 Mark Attendance"
+                android:textColor="@android:color/white"
+                android:backgroundTint="#4CAF50"
+                app:cornerRadius="24dp"
+                android:layout_marginBottom="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnViewAttendance"
+                android:text="📜 View Attendance"
+                android:textColor="@android:color/white"
+                android:backgroundTint="#03A9F4"
+                app:cornerRadius="24dp"
+                android:layout_marginBottom="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnStudentList"
+                android:text="👨‍🎓 Student List"
+                android:textColor="@android:color/white"
+                android:backgroundTint="#FF9800"
+                app:cornerRadius="24dp"
+                android:layout_marginBottom="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnReports"
+                android:text="📊 Reports"
+                android:textColor="@android:color/white"
+                android:backgroundTint="#9C27B0"
+                app:cornerRadius="24dp"
+                android:layout_marginBottom="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </ScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
