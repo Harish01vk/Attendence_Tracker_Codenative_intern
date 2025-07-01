@@ -14,7 +14,7 @@
         android:theme="@style/Theme.Attendence_Tracker"
         tools:targetApi="31">
 
-        <!-- Launcher activity -->
+        <!-- Launcher Activity -->
         <activity
             android:name=".HomeActivity"
             android:exported="true">
@@ -23,15 +23,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- Other Activities -->
         <activity android:name=".MarkAttendanceActivity" />
-        <activity android:name=".StudentListActivity"/>
-        <activity android:name=".ViewAttendanceActivity"/>
-        <activity android:name=".ReportActivity"/>
-
-
-
-
+        <activity android:name=".StudentListActivity" />
+        <activity android:name=".ViewAttendanceActivity" />
+        <activity android:name=".ReportActivity" />
 
     </application>
-
 </manifest>
