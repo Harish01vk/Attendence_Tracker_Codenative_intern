@@ -18,7 +18,7 @@
         android:textColor="#212121"
         android:gravity="center"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/datePicker"
+        app:layout_constraintBottom_toTopOf="@+id/datePickerLayout"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="20dp"

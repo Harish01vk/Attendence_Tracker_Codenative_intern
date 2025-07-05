@@ -9,26 +9,41 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.attendence_tracker.Model.AttendanceInstance;
+import com.example.attendence_tracker.Model.StudentInstance;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class AttendanceMarkAdapter extends RecyclerView.Adapter<AttendanceMarkAdapter.ViewHolder> {
 
-    private List<Student> studentList;
-
-    public AttendanceMarkAdapter(List<Student> studentList) {
+    private List<StudentInstance> studentList= StudentDataStore.getStudentList();
+    private List<AttendanceInstance> attendanceList;
+    public AttendanceMarkAdapter(List<StudentInstance> studentList ) {
         this.studentList = studentList;
+        this.attendanceList = new ArrayList<>();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        String today = sdf.format(new Date());
+
+        for(StudentInstance studentInstance : studentList){
+                AttendanceInstance attendanceInstance = new AttendanceInstance();
+                attendanceInstance.setStudentID(studentInstance.getStudentId());
+                attendanceInstance.setAttendanceStatus(false);
+                attendanceInstance.setAttendanceDate(today);
+                attendanceInstance.setStudentName(studentInstance.getName());
+                attendanceList.add(attendanceInstance);
+        }
+
     }
 
-    public ArrayList<Student> getMarkedStudents() {
-        ArrayList<Student> presentList = new ArrayList<>();
-        for (Student s : studentList) {
-            if (s.isPresent()) {
-                presentList.add(s);
-            }
-        }
-        return presentList;
+
+    public List<AttendanceInstance> getattendanceList() {
+        return attendanceList;
     }
+
 
     @NonNull
     @Override
@@ -40,12 +55,13 @@ public class AttendanceMarkAdapter extends RecyclerView.Adapter<AttendanceMarkAd
 
     @Override
     public void onBindViewHolder(@NonNull AttendanceMarkAdapter.ViewHolder holder, int position) {
-        Student student = studentList.get(position);
-        holder.name.setText(student.getName());
-        holder.checkbox.setChecked(student.isPresent());
+        StudentInstance studentInstance = studentList.get(position);
+        AttendanceInstance attendanceInstance = attendanceList.get(position);
+        holder.name.setText(studentInstance.getName());
+        holder.checkbox.setChecked(attendanceInstance.isAttendanceStatus());
 
         holder.checkbox.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            student.setPresent(isChecked);
+            attendanceInstance.setAttendanceStatus(isChecked);
         });
     }
 
