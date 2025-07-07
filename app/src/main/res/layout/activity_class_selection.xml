@@ -1,19 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/bg_gradient"
-    android:padding="16dp"
-    tools:context=".ReportActivity">
+    android:padding="16dp">
 
     <TextView
-        android:id="@+id/reportTitle"
+        android:id="@+id/classSelectionTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Attendance Report"
+        android:text="Select a Class"
         android:textSize="24sp"
         android:textStyle="bold"
         android:textColor="@android:color/white"
@@ -30,10 +28,11 @@
         app:cardUseCompatPadding="true">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/reportRecyclerView"
+            android:id="@+id/recycler_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="8dp" />
 
     </com.google.android.material.card.MaterialCardView>
+
 </LinearLayout>

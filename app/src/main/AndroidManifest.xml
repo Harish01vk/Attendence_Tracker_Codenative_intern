@@ -31,6 +31,8 @@
 
 
         <!-- Other Activities -->
+        <activity android:name=".ClassSelectionActivity" />
+
         <activity android:name=".MarkAttendanceActivity" />
         <activity android:name=".StudentListActivity" />
         <activity android:name=".ViewAttendanceActivity" />

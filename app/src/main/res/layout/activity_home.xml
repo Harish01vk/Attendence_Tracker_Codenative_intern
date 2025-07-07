@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeActivity">
+    tools:context=".HomeActivity"
+    android:background="@drawable/bg_gradient">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -14,7 +15,10 @@
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:padding="8dp"
+            android:gravity="center_horizontal">
 
             <!-- Welcome Text -->
             <TextView
@@ -40,9 +44,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
-                app:cardCornerRadius="20dp"
-                app:cardElevation="8dp"
-                app:cardBackgroundColor="@android:color/white">
+                app:cardCornerRadius="24dp"
+                app:cardElevation="12dp"
+                app:cardBackgroundColor="@android:color/white"
+                app:cardUseCompatPadding="true"
+                app:cardPreventCornerOverlap="true">
 
                 <LinearLayout
                     android:orientation="horizontal"
@@ -90,42 +96,58 @@
                 android:id="@+id/btnMarkAttendance"
                 style="@style/Widget.MaterialComponents.Button"
                 android:text="🎯 Mark Attendance"
-                android:textColor="@android:color/white"
-                android:backgroundTint="#4CAF50"
-                app:cornerRadius="24dp"
+                android:textColor="#FFFFFF"
+                android:backgroundTint="#00897B"
+                app:cornerRadius="32dp"
                 android:layout_marginBottom="16dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                app:icon="@drawable/ic_launcher_foreground"
+                app:iconGravity="textStart"
+                app:iconPadding="8dp"
+                app:elevation="4dp" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnViewAttendance"
                 android:text="📜 View Attendance"
-                android:textColor="@android:color/white"
-                android:backgroundTint="#03A9F4"
-                app:cornerRadius="24dp"
+                android:textColor="#FFFFFF"
+                android:backgroundTint="#00897B"
+                app:cornerRadius="32dp"
                 android:layout_marginBottom="16dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                app:icon="@drawable/ic_launcher_foreground"
+                app:iconGravity="textStart"
+                app:iconPadding="8dp"
+                app:elevation="4dp" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnStudentList"
                 android:text="👨‍🎓 Student List"
-                android:textColor="@android:color/white"
-                android:backgroundTint="#FF9800"
-                app:cornerRadius="24dp"
+                android:textColor="#FFFFFF"
+                android:backgroundTint="#00897B"
+                app:cornerRadius="32dp"
                 android:layout_marginBottom="16dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                app:icon="@drawable/ic_launcher_foreground"
+                app:iconGravity="textStart"
+                app:iconPadding="8dp"
+                app:elevation="4dp" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnReports"
                 android:text="📊 Reports"
-                android:textColor="@android:color/white"
-                android:backgroundTint="#9C27B0"
-                app:cornerRadius="24dp"
+                android:textColor="#FFFFFF"
+                android:backgroundTint="#00897B"
+                app:cornerRadius="32dp"
                 android:layout_marginBottom="16dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                app:icon="@drawable/ic_launcher_foreground"
+                app:iconGravity="textStart"
+                app:iconPadding="8dp"
+                app:elevation="4dp" />
         </LinearLayout>
     </ScrollView>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

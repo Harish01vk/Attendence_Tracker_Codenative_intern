@@ -31,7 +31,8 @@ public class HomeActivity extends AppCompatActivity {
 
         // Actions
         btnMarkAttendance.setOnClickListener(v -> {
-            startActivity(new Intent(HomeActivity.this, MarkAttendanceActivity.class));
+            Intent intent = new Intent(HomeActivity.this, ClassSelectionActivity.class);
+            startActivity(intent);
         });
 
         btnViewAttendance.setOnClickListener(v -> {
