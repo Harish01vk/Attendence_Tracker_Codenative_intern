@@ -7,18 +7,32 @@ public class AttendanceInstance {
     private int studentID;
     private boolean attendanceStatus;
     private String attendanceDate;
+    private int courseID;
     private String studentName;
-    public AttendanceInstance(int attendanceID, int studentID, Date attendanceDate, boolean attendanceStatus ,String studentName) {
+    public AttendanceInstance(int attendanceID, int studentID, Date attendanceDate, boolean attendanceStatus ,String studentName, int courseID) {
         this.attendanceStatus = attendanceStatus;
         this.studentID = studentID;
         this.attendanceDate = String.valueOf(attendanceDate);
         this.attendanceID = attendanceID;
         this.studentName = studentName;
+        this.courseID = courseID;
 
     }
 
     public String getStudentName() {
         return studentName;
+    }
+
+    public void setAttendanceID(Integer attendanceID) {
+        this.attendanceID = attendanceID;
+    }
+
+    public int getCourseID() {
+        return courseID;
+    }
+
+    public void setCourseID(int courseID) {
+        this.courseID = courseID;
     }
 
     public void setStudentName(String studentName) {

@@ -31,6 +31,7 @@ public class MarkAttendanceActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mark_attendance);
+        int courseID = getIntent().getIntExtra("courseID", -1);
 
         recyclerView = findViewById(R.id.recyclerViewAttendance);
         btnSubmit = findViewById(R.id.btnSubmitAttendance);
@@ -41,7 +42,7 @@ public class MarkAttendanceActivity extends AppCompatActivity {
         RetroFitService retroFitService = new RetroFitService();
         AttendanceAPI attendanceAPI = retroFitService.getRetrofit().create(AttendanceAPI.class);
         // ✅ Initialize adapter with just student list (it internally builds attendance list)
-        adapter = new AttendanceMarkAdapter(studentList);
+        adapter = new AttendanceMarkAdapter(studentList,courseID);
         recyclerView.setAdapter(adapter);
 
         btnSubmit.setOnClickListener(view -> {

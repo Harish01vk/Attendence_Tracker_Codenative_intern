@@ -22,7 +22,7 @@ public class AttendanceMarkAdapter extends RecyclerView.Adapter<AttendanceMarkAd
 
     private List<StudentInstance> studentList= StudentDataStore.getStudentList();
     private List<AttendanceInstance> attendanceList;
-    public AttendanceMarkAdapter(List<StudentInstance> studentList ) {
+    public AttendanceMarkAdapter(List<StudentInstance> studentList, int courseID) {
         this.studentList = studentList;
         this.attendanceList = new ArrayList<>();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
@@ -34,6 +34,7 @@ public class AttendanceMarkAdapter extends RecyclerView.Adapter<AttendanceMarkAd
                 attendanceInstance.setAttendanceStatus(false);
                 attendanceInstance.setAttendanceDate(today);
                 attendanceInstance.setStudentName(studentInstance.getName());
+                attendanceInstance.setCourseID(courseID);
                 attendanceList.add(attendanceInstance);
         }
 

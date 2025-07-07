@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AttendanceAdapter extends RecyclerView.Adapter<AttendanceAdapter.AttendanceViewHolder> {
+public class ViewAttendanceAdapter extends RecyclerView.Adapter<ViewAttendanceAdapter.AttendanceViewHolder> {
 
     private List<AttendanceRecord> attendanceList = new ArrayList<>();
 

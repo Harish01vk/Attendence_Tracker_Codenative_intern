@@ -9,6 +9,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.attendence_tracker.Model.AttendanceInstance;
+import com.example.attendence_tracker.RetrofitService.AttendanceAPI;
+import com.example.attendence_tracker.RetrofitService.RetroFitService;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.text.SimpleDateFormat;
@@ -17,11 +20,15 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class ViewAttendanceActivity extends AppCompatActivity {
 
     private TextInputEditText editTextDate;
     private RecyclerView attendanceRecyclerView;
-    private AttendanceAdapter attendanceAdapter;
+    private ViewAttendanceAdapter viewAttendanceAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,8 +41,8 @@ public class ViewAttendanceActivity extends AppCompatActivity {
 
         // Set up RecyclerView
         attendanceRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        attendanceAdapter = new AttendanceAdapter();
-        attendanceRecyclerView.setAdapter(attendanceAdapter);
+        viewAttendanceAdapter = new ViewAttendanceAdapter();
+        attendanceRecyclerView.setAdapter(viewAttendanceAdapter);
 
         // On click show date picker
         editTextDate.setOnClickListener(view -> showDatePickerDialog());
@@ -62,16 +69,34 @@ public class ViewAttendanceActivity extends AppCompatActivity {
         datePickerDialog.show();
     }
 
+
     private void fetchAttendanceData(String date) {
         // TODO: Replace this dummy list with a real API call (Retrofit)
+        RetroFitService retroFitService = new RetroFitService();
+
+        AttendanceAPI attendanceAPI = retroFitService.getRetrofit().create(AttendanceAPI.class);
+        attendanceAPI.RetrieveFromDate(date).enqueue(new Callback<List<AttendanceInstance>>() {
+
+                                                         @Override
+                                                         public void onResponse(Call<List<AttendanceInstance>> call, Response<List<AttendanceInstance>> response) {
+List<AttendanceInstance> attendanceInstances = response.body();
+List<AttendanceRecord> attendanceRecordList = new ArrayList<>();
+for (AttendanceInstance attendanceInstance : attendanceInstances) {
+    AttendanceRecord attendanceRecord = new AttendanceRecord(attendanceInstance.getStudentName(), attendanceInstance.isAttendanceStatus() ? "Present" : "Absent");
+    attendanceRecordList.add(attendanceRecord);}
+
+                                                             viewAttendanceAdapter.setData(attendanceRecordList);
+
+                                                         }
+
+                                                         @Override
+                                                         public void onFailure(Call<List<AttendanceInstance>> call, Throwable t) {
+Toast.makeText(ViewAttendanceActivity.this, "Error: " + t.getMessage(), Toast.LENGTH_LONG).show();
+                                                         }
+                                                     });
+
         Toast.makeText(this, "Fetching attendance for " + date, Toast.LENGTH_SHORT).show();
 
-        // Dummy data for now
-        List<AttendanceRecord> dummyList = new ArrayList<>();
-        dummyList.add(new AttendanceRecord("Harish M", "Present"));
-        dummyList.add(new AttendanceRecord("Divya R", "Absent"));
-        dummyList.add(new AttendanceRecord("Rahul K", "Present"));
 
-        attendanceAdapter.setData(dummyList);
     }
 }

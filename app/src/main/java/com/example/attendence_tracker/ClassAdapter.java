@@ -7,20 +7,24 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.attendence_tracker.Model.CourseInstance;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class ClassAdapter extends RecyclerView.Adapter<ClassAdapter.ViewHolder> {
-    private List<ClassModel> classList;
+    private List<CourseInstance> classList;
     private OnItemClickListener onItemClickListener;
 
     public ClassAdapter(OnItemClickListener onItemClickListener) {
         this.onItemClickListener = onItemClickListener;
     }
 
-    public void setClassList(List<ClassModel> classList) {
-        this.classList = classList;
+    public void setClassList(List<CourseInstance> classList) {
+        this.classList = classList != null ? classList : new ArrayList<>();
         notifyDataSetChanged();
     }
+
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -30,13 +34,14 @@ public class ClassAdapter extends RecyclerView.Adapter<ClassAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        ClassModel classModel = classList.get(position);
-        holder.textView.setText(classModel.getName());
+        CourseInstance courseInstance = classList.get(position);
+        holder.textView.setText(courseInstance.getCourseName());
     }
 
     @Override
+
     public int getItemCount() {
-        return classList.size();
+        return classList != null ? classList.size() : 0;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -57,6 +62,6 @@ public class ClassAdapter extends RecyclerView.Adapter<ClassAdapter.ViewHolder> 
     }
 
     public interface OnItemClickListener {
-        void onItemClick(ClassModel classModel);
+        void onItemClick(CourseInstance courseInstance);
     }
 }
