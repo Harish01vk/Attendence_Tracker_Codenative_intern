@@ -148,6 +148,20 @@
                 app:iconGravity="textStart"
                 app:iconPadding="8dp"
                 app:elevation="4dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnLogout"
+                android:text="🚪 Logout"
+                android:textColor="#FFFFFF"
+                android:backgroundTint="#F44336"
+                app:cornerRadius="32dp"
+                android:layout_marginBottom="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:icon="@drawable/ic_launcher_foreground"
+                app:iconGravity="textStart"
+                app:iconPadding="8dp"
+                app:elevation="4dp" />
         </LinearLayout>
     </ScrollView>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

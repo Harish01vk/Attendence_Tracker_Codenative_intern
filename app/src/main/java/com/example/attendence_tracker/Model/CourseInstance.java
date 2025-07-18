@@ -12,6 +12,8 @@ public class CourseInstance {
         this.courseSemester = courseSemester;
     }
 
+
+
     public void setCourseID(int courseID) {
         this.courseID = courseID;
     }

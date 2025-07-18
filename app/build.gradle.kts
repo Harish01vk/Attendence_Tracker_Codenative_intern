@@ -48,4 +48,6 @@ dependencies {
     implementation("com.squareup.retrofit2:converter-scalars:2.9.0")
     implementation ("androidx.recyclerview:recyclerview:1.1.0")
     implementation ("androidx.recyclerview:recyclerview-selection:1.1.0")
+    // HTTP logging interceptor for debugging
+    implementation("com.squareup.okhttp3:logging-interceptor:4.9.0")
 }
