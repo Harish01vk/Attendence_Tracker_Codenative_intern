@@ -7,10 +7,19 @@
     tools:context=".HomeActivity"
     android:background="@drawable/bg_gradient">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        app:title=""
+        app:navigationIconTint="@android:color/black" />
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="16dp">
+        android:padding="16dp"
+        android:layout_marginTop="56dp">
 
         <LinearLayout
             android:orientation="vertical"
@@ -70,23 +79,28 @@
                         android:orientation="vertical"
                         android:layout_marginStart="16dp"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:gravity="center">
 
                         <TextView
-                            android:text="Total Classes"
-                            android:textSize="16sp"
+                            android:id="@+id/quoteText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Teaching is the one profession that creates all other professions."
+                            android:textSize="18sp"
+                            android:textColor="#00897B"
+                            android:textStyle="italic"
+                            android:gravity="center"
+                            android:padding="8dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Have a nice day!"
+                            android:textSize="14sp"
                             android:textColor="#444"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-
-                        <TextView
-                            android:id="@+id/totalClasses"
-                            android:text="08"
-                            android:textSize="24sp"
-                            android:textStyle="bold"
-                            android:textColor="#6200EE"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:gravity="center"
+                            android:paddingTop="4dp" />
                     </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -149,19 +163,7 @@
                 app:iconPadding="8dp"
                 app:elevation="4dp" />
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnLogout"
-                android:text="🚪 Logout"
-                android:textColor="#FFFFFF"
-                android:backgroundTint="#F44336"
-                app:cornerRadius="32dp"
-                android:layout_marginBottom="16dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:icon="@drawable/ic_launcher_foreground"
-                app:iconGravity="textStart"
-                app:iconPadding="8dp"
-                app:elevation="4dp" />
+            <!-- Removed the old logout button here -->
         </LinearLayout>
     </ScrollView>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

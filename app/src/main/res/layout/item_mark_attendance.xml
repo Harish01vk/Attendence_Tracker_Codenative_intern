@@ -1,37 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp"
-    card_view:cardCornerRadius="12dp"
-    card_view:cardElevation="4dp">
+    android:orientation="horizontal"
+    android:padding="12dp"
+    android:gravity="center_vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/tvStudentName"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="16dp"
-        android:gravity="center_vertical"
-        android:weightSum="1">
+        android:layout_weight="1"
+        android:text="Student Name"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="#222" />
 
-        <TextView
-            android:id="@+id/textStudentName"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.7"
-            android:text="Student Name"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:textColor="#212121" />
+    <TextView
+        android:id="@+id/tvAttendanceStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Absent"
+        android:textSize="16sp"
+        android:textColor="#F44336"
+        android:layout_marginStart="16dp"/>
 
-        <CheckBox
-            android:id="@+id/checkboxPresent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Present"
-            android:textColor="#388E3C" />
-    </LinearLayout>
+    <CheckBox
+        android:id="@+id/checkBoxPresent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"/>
 
-</androidx.cardview.widget.CardView>
+</LinearLayout>

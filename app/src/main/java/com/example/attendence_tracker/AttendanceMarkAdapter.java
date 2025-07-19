@@ -1,5 +1,6 @@
 package com.example.attendence_tracker;
 
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +21,7 @@ import java.util.Locale;
 
 public class AttendanceMarkAdapter extends RecyclerView.Adapter<AttendanceMarkAdapter.ViewHolder> {
 
-    private List<StudentInstance> studentList= StudentDataStore.getStudentList();
+    private List<StudentInstance> studentList;
     private List<AttendanceInstance> attendanceList;
     public AttendanceMarkAdapter(List<StudentInstance> studentList, int courseID) {
         this.studentList = studentList;
@@ -29,56 +30,66 @@ public class AttendanceMarkAdapter extends RecyclerView.Adapter<AttendanceMarkAd
         String today = sdf.format(new Date());
 
         for(StudentInstance studentInstance : studentList){
-                AttendanceInstance attendanceInstance = new AttendanceInstance();
-                attendanceInstance.setStudentID(studentInstance.getStudentId());
-                attendanceInstance.setAttendanceStatus(false);
-                attendanceInstance.setAttendanceDate(today);
-                attendanceInstance.setStudentName(studentInstance.getName());
-                attendanceInstance.setCourseID(courseID);
-                attendanceList.add(attendanceInstance);
+            AttendanceInstance attendanceInstance = new AttendanceInstance();
+            attendanceInstance.setStudentID(studentInstance.getStudentId());
+            attendanceInstance.setAttendanceStatus(false);
+            attendanceInstance.setAttendanceDate(today);
+            attendanceInstance.setStudentName(studentInstance.getName());
+            attendanceInstance.setCourseID(courseID);
+            attendanceList.add(attendanceInstance);
         }
 
     }
-
 
     public List<AttendanceInstance> getattendanceList() {
         return attendanceList;
     }
 
-
     @NonNull
     @Override
-    public AttendanceMarkAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_mark_attendance, parent, false);
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_mark_attendance, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull AttendanceMarkAdapter.ViewHolder holder, int position) {
-        StudentInstance studentInstance = studentList.get(position);
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         AttendanceInstance attendanceInstance = attendanceList.get(position);
-        holder.name.setText(studentInstance.getName());
-        holder.checkbox.setChecked(attendanceInstance.isAttendanceStatus());
+        holder.studentName.setText(attendanceInstance.getStudentName());
+        setStatusText(holder, attendanceInstance.isAttendanceStatus());
+        holder.checkBox.setChecked(attendanceInstance.isAttendanceStatus());
 
-        holder.checkbox.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            attendanceInstance.setAttendanceStatus(isChecked);
+        holder.itemView.setOnClickListener(v -> {
+            boolean newStatus = !attendanceInstance.isAttendanceStatus();
+            attendanceInstance.setAttendanceStatus(newStatus);
+            holder.checkBox.setChecked(newStatus);
+            setStatusText(holder, newStatus);
         });
+        holder.checkBox.setOnClickListener(v -> {
+            boolean newStatus = holder.checkBox.isChecked();
+            attendanceInstance.setAttendanceStatus(newStatus);
+            setStatusText(holder, newStatus);
+        });
+    }
+
+    private void setStatusText(ViewHolder holder, boolean isPresent) {
+        holder.statusText.setText(isPresent ? "Present" : "Absent");
+        holder.statusText.setTextColor(isPresent ? Color.parseColor("#388E3C") : Color.parseColor("#F44336"));
     }
 
     @Override
     public int getItemCount() {
-        return studentList.size();
+        return attendanceList.size();
     }
 
-    static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView name;
-        CheckBox checkbox;
-
-        ViewHolder(View itemView) {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+        TextView studentName, statusText;
+        CheckBox checkBox;
+        public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            name = itemView.findViewById(R.id.textStudentName);
-            checkbox = itemView.findViewById(R.id.checkboxPresent);
+            studentName = itemView.findViewById(R.id.tvStudentName);
+            statusText = itemView.findViewById(R.id.tvAttendanceStatus);
+            checkBox = itemView.findViewById(R.id.checkBoxPresent);
         }
     }
 }

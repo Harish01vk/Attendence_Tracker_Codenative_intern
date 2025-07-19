@@ -7,7 +7,6 @@
 
     <application
         android:name=".STUDENTLOADER"
-
         android:allowBackup="true"
       android:dataExtractionRules="@xml/data_extraction_rules"
        android:usesCleartextTraffic="true"
@@ -21,7 +20,7 @@
 
         <!-- Launcher Activity -->
         <activity
-            android:name=".HomeActivity"
+            android:name=".TeacherLoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -29,14 +28,15 @@
             </intent-filter>
         </activity>
 
-
         <!-- Other Activities -->
-        <activity android:name=".TeacherLoginActivity" />
+        <activity android:name=".HomeActivity" />
         <activity android:name=".ClassSelectionActivity" />
         <activity android:name=".MarkAttendanceActivity" />
         <activity android:name=".StudentListActivity" />
         <activity android:name=".ViewAttendanceActivity" />
         <activity android:name=".ReportActivity" />
+        <activity android:name=".TimeTableActivity" />
+        <activity android:name=".ProfileActivity" />
 
     </application>
 </manifest>

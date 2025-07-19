@@ -13,8 +13,8 @@ public class StudentListHolder extends RecyclerView.ViewHolder {
 
     public StudentListHolder(@NonNull View itemView) {
         super(itemView);
-        studentName = itemView.findViewById(R.id.studentName);
-        studentID = itemView.findViewById(R.id.studentID);
+        studentName = itemView.findViewById(R.id.tvStudentName);
+        studentID = itemView.findViewById(R.id.tvStudentInitial);
     }
 
 

@@ -25,7 +25,6 @@ public class ClassAdapter extends RecyclerView.Adapter<ClassAdapter.ViewHolder> 
         notifyDataSetChanged();
     }
 
-
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_class, parent, false);
@@ -35,21 +34,27 @@ public class ClassAdapter extends RecyclerView.Adapter<ClassAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         CourseInstance courseInstance = classList.get(position);
-        holder.textView.setText(courseInstance.getCourseName());
+        holder.tvCourseName.setText(courseInstance.getCourseName());
+        holder.tvCourseSemester.setText(courseInstance.getCourseSemester());
+        // Set initial (first letter, uppercase)
+        String initial = courseInstance.getCourseName() != null && !courseInstance.getCourseName().isEmpty() ?
+                courseInstance.getCourseName().substring(0, 1).toUpperCase() : "?";
+        holder.tvCourseInitial.setText(initial);
     }
 
     @Override
-
     public int getItemCount() {
         return classList != null ? classList.size() : 0;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView textView;
+        public TextView tvCourseName, tvCourseSemester, tvCourseInitial;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            textView = itemView.findViewById(R.id.text_view);
+            tvCourseName = itemView.findViewById(R.id.tvCourseName);
+            tvCourseSemester = itemView.findViewById(R.id.tvCourseSemester);
+            tvCourseInitial = itemView.findViewById(R.id.tvCourseInitial);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

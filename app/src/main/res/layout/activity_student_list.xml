@@ -8,30 +8,22 @@
     android:padding="16dp">
 
     <TextView
-        android:id="@+id/textTitle"
+        android:id="@+id/tvStudentListTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Student List"
         android:textSize="24sp"
         android:textStyle="bold"
-        android:textColor="@android:color/white"
+        android:textColor="#00897B"
         android:gravity="center"
         android:paddingBottom="16dp" />
 
-    <com.google.android.material.card.MaterialCardView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/attendanceRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        app:cardCornerRadius="24dp"
-        app:cardElevation="8dp"
-        app:cardBackgroundColor="@android:color/white"
-        app:cardUseCompatPadding="true">
+        android:clipToPadding="false"
+        android:paddingBottom="8dp" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/attendanceRecyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="8dp" />
-
-    </com.google.android.material.card.MaterialCardView>
 </LinearLayout>
