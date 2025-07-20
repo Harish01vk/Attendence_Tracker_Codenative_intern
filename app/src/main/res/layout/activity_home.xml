@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".HomeActivity"
-    android:background="@drawable/bg_gradient">
+    android:background="@color/background_light">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -35,7 +35,7 @@
                 android:text="Hey 👋 Harish!"
                 android:textSize="26sp"
                 android:textStyle="bold"
-                android:textColor="@android:color/black"
+                android:textColor="@color/text_dark"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingBottom="8dp" />
@@ -43,7 +43,7 @@
             <TextView
                 android:text="Let's manage attendance today!"
                 android:textSize="16sp"
-                android:textColor="@android:color/black"
+                android:textColor="@color/text_dark"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingBottom="24dp" />

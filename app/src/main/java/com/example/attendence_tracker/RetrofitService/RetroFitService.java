@@ -1,7 +1,5 @@
 package com.example.attendence_tracker.RetrofitService;
 
-import android.util.Log;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -27,7 +25,7 @@ public class RetroFitService {
         HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor(new HttpLoggingInterceptor.Logger() {
             @Override
             public void log(String message) {
-                Log.d("HTTP_DEBUG", message);
+                android.util.Log.d("HTTP_DEBUG", message);
             }
         });
         loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
@@ -37,7 +35,7 @@ public class RetroFitService {
                 .build();
 
         retrofit = new Retrofit.Builder()
-                .baseUrl("http://10.0.2.2:8080")
+                .baseUrl("https://attendance-tracker-backend-ej1a.onrender.com") // TODO: Replace with your actual Render backend URL
                 .client(client)
                 .addConverterFactory(GsonConverterFactory.create(gson)) // handles JSON with correct date format
                 .addConverterFactory(ScalarsConverterFactory.create()) // handles plain text like "Student added"
@@ -47,4 +45,4 @@ public class RetroFitService {
     public Retrofit getRetrofit(){
         return retrofit;
     }
-}
+} 

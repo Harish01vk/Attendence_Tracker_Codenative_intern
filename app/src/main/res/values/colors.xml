@@ -2,4 +2,12 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="background_light">#ECECEC</color> <!-- slightly darker than pure white -->
+    <color name="card_light">#FFFFFF</color>
+    <color name="text_dark">#222222</color>
+    <color name="header_text">#1976D2</color> <!-- blue for top headers -->
+    <color name="text_light">#FFFFFF</color>
+    <color name="accent">#00ADB5</color>
+    <color name="input_stroke">#1976D2</color>
+    <color name="input_bg">#FFFFFF</color>
 </resources>
